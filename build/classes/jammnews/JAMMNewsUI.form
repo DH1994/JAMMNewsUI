@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane5" alignment="0" pref="600" max="32767" attributes="0"/>
+          <Component id="jTabbedPane5" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,111 +52,51 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label1" min="-2" max="-2" attributes="0"/>
-                          <Component id="actionsList" min="-2" pref="141" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="createConfig" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveConfig" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="label3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="hourCbox" min="-2" pref="58" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="label6" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="addTask" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="label4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="minCbox" min="-2" pref="58" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="secCbox" min="-2" pref="58" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="rptChk" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                              <Component id="addTask" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="delTask" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="editTask" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="delTask" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="editTask" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="label2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="taskList" min="-2" pref="504" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="539" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="taskList" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="actionsList" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="createConfig" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="label5" max="32767" attributes="0"/>
-                                      <Component id="label3" max="32767" attributes="0"/>
-                                      <Component id="label4" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="hourCbox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="minCbox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="secCbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rptChk" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="addTask" min="-2" max="-2" attributes="0"/>
-                                  <Component id="delTask" min="-2" max="-2" attributes="0"/>
-                                  <Component id="editTask" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="label6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="taskList" min="-2" pref="352" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="addTask" min="-2" max="-2" attributes="0"/>
+                          <Component id="delTask" min="-2" max="-2" attributes="0"/>
+                          <Component id="editTask" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="label6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="taskList" pref="464" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="saveConfig" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="createConfig">
+            <Component class="javax.swing.JButton" name="saveConfig">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Config"/>
               </Properties>
@@ -164,62 +104,8 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="createConfig"/>
               </AccessibilityProperties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createConfigActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveConfigActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="java.awt.Choice" name="hourCbox">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(int i = 0; i &lt; 24; i++)&#xa;{&#xa;    if(i &lt; 10)&#xa;        hourCbox.add(&quot;0&quot; + i + &quot;&quot;);&#xa;    else&#xa;        hourCbox.add(i + &quot;&quot;);&#xa;}"/>
-              </AuxValues>
-            </Component>
-            <Component class="java.awt.Label" name="label1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Action"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.List" name="actionsList">
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-              </AccessibilityProperties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionsListActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="actionsList.add(&quot;Download&quot;);&#xa;actionsList.add(&quot;Mix&quot;);&#xa;actionsList.add(&quot;Concatenate&quot;);&#xa;actionsList.add(&quot;Shell Command&quot;);&#xa;actionsList.add(&quot;Split Audio&quot;);"/>
-              </AuxValues>
-            </Component>
-            <Component class="java.awt.Choice" name="minCbox">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(int i = 0; i &lt; 60; i++)&#xa;{&#xa;    if(i &lt; 10)&#xa;        minCbox.add(&quot;0&quot; + i + &quot;&quot;);&#xa;    else&#xa;        minCbox.add(i + &quot;&quot;);&#xa;}"/>
-              </AuxValues>
-            </Component>
-            <Component class="java.awt.Label" name="label2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Time"/>
-              </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
-              </AccessibilityProperties>
-            </Component>
-            <Component class="java.awt.Label" name="label3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Hour"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.Label" name="label4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Min"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.Checkbox" name="rptChk">
-              <Properties>
-                <Property name="label" type="java.lang.String" value="enable"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.Label" name="label5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Repeat hourly"/>
-              </Properties>
             </Component>
             <Component class="java.awt.Button" name="addTask">
               <Properties>
@@ -255,16 +141,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Task list"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sec"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.Choice" name="secCbox">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(int i = 0; i &lt; 60; i+=10)&#xa;{&#xa;    if(i &lt; 10)&#xa;        secCbox.add(&quot;0&quot; + i + &quot;&quot;);&#xa;    else&#xa;        secCbox.add(i + &quot;&quot;);&#xa;}"/>
-              </AuxValues>
             </Component>
             <Component class="java.awt.Button" name="editTask">
               <Properties>
@@ -348,7 +224,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="96" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="109" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="label7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>

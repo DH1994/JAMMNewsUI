@@ -5,6 +5,7 @@
  */
 package jammnews;
 
+import jammnews.tasks.Order;
 import jammnews.tasks.Mix;
 import jammnews.tasks.ShellCmd;
 import jammnews.tasks.Download;
@@ -23,16 +24,18 @@ import org.json.*;
  *
  * @author dhergaarden
  */
+
+
 public class JsonParser {
 
     JSONObject json = new JSONObject();
-    LinkedList<Task> taskList = new LinkedList<>();
+    LinkedList<Order> taskList = new LinkedList<>();
     
     
-    public JsonParser(LinkedList<Task> taskList) 
+    public JsonParser(LinkedList<Order> taskList) 
     {
         this.taskList = taskList;
-        jsonParse();
+        //jsonParse();
     }
     
     public JsonParser(String json)
@@ -53,7 +56,7 @@ public class JsonParser {
             for(int i = 0; i < arr.length(); i++)
             {
                 JSONObject jo = (JSONObject)arr.get(i);
-                Task t = new Task();
+                Order t = new Order();
                 
                 t.setHour(jo.getInt("hour"));
                 t.setMin(jo.getInt("min"));
@@ -126,11 +129,11 @@ public class JsonParser {
             Logger.getLogger(JsonParser.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
-    
+/*    
     private void jsonParse()
     {
         JSONArray tasksArray = new JSONArray();
-        for(Task t : taskList)
+        for(Order t : taskList)
         {
             JSONObject item = new JSONObject();
             try 
@@ -255,13 +258,13 @@ public class JsonParser {
             Logger.getLogger(JsonParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+*/
     public String getJson() 
     {
         return json.toString() + "\n";
     } 
 
-    public LinkedList<Task> getTaskList() {
+    public LinkedList<Order> getTaskList() {
         return taskList;
     }
     

@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jammnews;
+package jammnews.tasks;
+
+import java.util.LinkedList;
 
 /**
  *
  * @author dhergaarden
  */
-public class Task<T> {
+public class Order<T> {
        
     private int hour;
+    private LinkedList<T> actions = new LinkedList<>();
+
 
     /**
      * Get the value of hour
@@ -91,15 +95,14 @@ public class Task<T> {
         this.repeat = repeat;
     }
 
-        private T action;
 
     /**
      * Get the value of action
      *
      * @return the value of action
      */
-    public T getAction() {
-        return action;
+    public LinkedList getActions() {
+        return actions;
     }
 
     /**
@@ -108,7 +111,67 @@ public class Task<T> {
      * @param action new value of action
      */
     public void setAction(T action) {
-        this.action = action;
+        this.actions.add(action);
+    }
+
+        private int days;
+
+    /**
+     * Get the value of days
+     *
+     * @return the value of days
+     */
+    public int getDays() {
+        return days;
+    }
+
+    /**
+     * Set the value of days
+     *
+     * @param days new value of days
+     */
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+        private String output;
+
+    /**
+     * Get the value of output
+     *
+     * @return the value of output
+     */
+    public String getOutput() {
+        return output;
+    }
+
+    /**
+     * Set the value of output
+     *
+     * @param output new value of output
+     */
+    public void setOutput(String output) {
+        this.output = output;
+    }
+
+        private String input;
+
+    /**
+     * Get the value of input
+     *
+     * @return the value of input
+     */
+    public String getInput() {
+        return input;
+    }
+
+    /**
+     * Set the value of input
+     *
+     * @param input new value of input
+     */
+    public void setInput(String input) {
+        this.input = input;
     }
 
 }

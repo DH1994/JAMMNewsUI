@@ -70,7 +70,7 @@ public class Download {
         this.user = user;
     }
 
-        private String output;
+    private String output;
 
     /**
      * Get the value of output
@@ -90,6 +90,27 @@ public class Download {
         this.output = output;
     }
 
+        private boolean auth;
+
+    /**
+     * Get the value of auth
+     *
+     * @return the value of auth
+     */
+    public boolean isAuth() {
+        return auth;
+    }
+
+    /**
+     * Set the value of auth
+     *
+     * @param auth new value of auth
+     */
+    public void setAuth(boolean auth) {
+        this.auth = auth;
+    }
+
+    
     @Override
     public String toString() {
         return "Download{" + "url=" + url + ", pass=" + pass + ", user=" + user + ", output=" + output + '}';

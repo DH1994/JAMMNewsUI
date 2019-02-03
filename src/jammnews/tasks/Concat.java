@@ -50,8 +50,8 @@ public class Concat {
     public void setInput2(String input2) {
         this.input2 = input2;
     }
-
-    private String output;
+    
+        private String output;
 
     /**
      * Get the value of output

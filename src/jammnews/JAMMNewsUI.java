@@ -5,6 +5,7 @@
  */
 package jammnews;
 
+import jammnews.tasks.Order;
 import jammnews.dialogs.*;
 import jammnews.tasks.*;
 import java.awt.Color;
@@ -30,12 +31,11 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
      */
     tcpConnection conn;
     JsonParser jp;
-    private LinkedList<Task> tasks = new LinkedList<>();
+    private LinkedList<Order> Orders = new LinkedList<>();
     private int taskCount = 0;
     
     public JAMMNewsUI() {
         initComponents();
-        actionsList.select(0);
     }
 
     /**
@@ -49,22 +49,11 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
 
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        createConfig = new javax.swing.JButton();
-        hourCbox = new java.awt.Choice();
-        label1 = new java.awt.Label();
-        actionsList = new java.awt.List();
-        minCbox = new java.awt.Choice();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
-        label4 = new java.awt.Label();
-        rptChk = new java.awt.Checkbox();
-        label5 = new java.awt.Label();
+        saveConfig = new javax.swing.JButton();
         addTask = new java.awt.Button();
         delTask = new java.awt.Button();
         taskList = new java.awt.List();
         label6 = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
-        secCbox = new java.awt.Choice();
         editTask = new java.awt.Button();
         jPanel2 = new javax.swing.JPanel();
         remTaskList = new java.awt.List();
@@ -85,46 +74,12 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        createConfig.setText("Create Config");
-        createConfig.addActionListener(new java.awt.event.ActionListener() {
+        saveConfig.setText("Create Config");
+        saveConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createConfigActionPerformed(evt);
+                saveConfigActionPerformed(evt);
             }
         });
-
-        for(int i = 0; i < 24; i++)
-        {
-            if(i < 10)
-            hourCbox.add("0" + i + "");
-            else
-            hourCbox.add(i + "");
-        }
-
-        label1.setText("Action");
-
-        actionsList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionsListActionPerformed(evt);
-            }
-        });
-
-        for(int i = 0; i < 60; i++)
-        {
-            if(i < 10)
-            minCbox.add("0" + i + "");
-            else
-            minCbox.add(i + "");
-        }
-
-        label2.setText("Time");
-
-        label3.setText("Hour");
-
-        label4.setText("Min");
-
-        rptChk.setLabel("enable");
-
-        label5.setText("Repeat hourly");
 
         addTask.setLabel("Add Task");
         addTask.addActionListener(new java.awt.event.ActionListener() {
@@ -148,16 +103,6 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
 
         label6.setText("Task list");
 
-        jLabel1.setText("Sec");
-
-        for(int i = 0; i < 60; i+=10)
-        {
-            if(i < 10)
-            secCbox.add("0" + i + "");
-            else
-            secCbox.add(i + "");
-        }
-
         editTask.setLabel("Edit Task");
         editTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,94 +114,40 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actionsList, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(createConfig))
+                        .addComponent(saveConfig))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hourCbox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabel1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(minCbox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(secCbox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rptChk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(addTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(delTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(editTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskList, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(addTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(delTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 539, Short.MAX_VALUE))
+                    .addComponent(taskList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(actionsList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(createConfig)
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel1))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(hourCbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(minCbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(secCbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rptChk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(addTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(delTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(taskList, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                    .addComponent(addTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(taskList, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveConfig))
         );
 
-        createConfig.getAccessibleContext().setAccessibleName("createConfig");
-        actionsList.add("Download");
-        actionsList.add("Mix");
-        actionsList.add("Concatenate");
-        actionsList.add("Shell Command");
-        actionsList.add("Split Audio");
-        actionsList.getAccessibleContext().setAccessibleName("");
-        label2.getAccessibleContext().setAccessibleDescription("");
+        saveConfig.getAccessibleContext().setAccessibleName("createConfig");
         addTask.getAccessibleContext().setAccessibleName("addTask");
         delTask.getAccessibleContext().setAccessibleName("delTask");
         taskList.getAccessibleContext().setAccessibleName("taskList");
@@ -371,7 +262,7 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -392,7 +283,7 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
 
         pack();
@@ -400,101 +291,28 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
 
     private void editTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTaskActionPerformed
 
-        Task t = tasks.get(taskList.getSelectedIndex());
+      //  Task t = tasks.get(taskList.getSelectedIndex());
 
-        if(Download.class.isInstance(t.getAction()))
-        {
-            DownloadDialog dd = new DownloadDialog(this, (Download)t.getAction(), taskList.getSelectedIndex());
-            dd.setAlwaysOnTop(true);
-            dd.setVisible(true);
-        }
 
-        if(Mix.class.isInstance(t.getAction()))
-        {
-            MixDialog md = new MixDialog(this,(Mix)t.getAction(), taskList.getSelectedIndex());
-            md.setAlwaysOnTop(true);
-            md.setVisible(true);
-        }
-
-        if(Concat.class.isInstance(t.getAction()))
-        {
-            ConcatDialog cd = new ConcatDialog(this, (Concat)t.getAction(), taskList.getSelectedIndex());
-            cd.setAlwaysOnTop(true);
-            cd.setVisible(true);
-        }
-
-        if(ShellCmd.class.isInstance(t.getAction()))
-        {
-            ShellCmdDialog scd = new ShellCmdDialog(this, (ShellCmd)t.getAction(), taskList.getSelectedIndex() );
-            scd.setAlwaysOnTop(true);
-            scd.setVisible(true);
-        }
-        
-        if(Split.class.isInstance(t.getAction()))
-        {
-            SplitDialog spd = new SplitDialog(this, (Split)t.getAction(), taskList.getSelectedIndex());
-            spd.setAlwaysOnTop(true);
-            spd.setVisible(true);
-        }
     }//GEN-LAST:event_editTaskActionPerformed
 
     private void taskListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_taskListItemStateChanged
-        hourCbox.select(tasks.get(taskList.getSelectedIndex()).getHour());
-        minCbox.select(tasks.get(taskList.getSelectedIndex()).getMin());
-        secCbox.select(tasks.get(taskList.getSelectedIndex()).getSec() / 10);
-        rptChk.setState(tasks.get(taskList.getSelectedIndex()).isRepeat());
+
     }//GEN-LAST:event_taskListItemStateChanged
 
     private void delTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delTaskActionPerformed
-        tasks.remove(taskList.getSelectedIndex());
+      //  tasks.remove(taskList.getSelectedIndex());
         refreshList();
     }//GEN-LAST:event_delTaskActionPerformed
 
     private void addTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskActionPerformed
-        String selected = actionsList.getSelectedItem();
-
-        if(selected == "Download")
-        {
-            DownloadDialog dd = new DownloadDialog(this);
-            dd.setAlwaysOnTop(true);
-            dd.setVisible(true);
-        }
-
-        if(selected == "Mix")
-        {
-            MixDialog md = new MixDialog(this);
-            md.setAlwaysOnTop(true);
-            md.setVisible(true);
-        }
-
-        if(selected == "Concatenate")
-        {
-            ConcatDialog cd = new ConcatDialog(this);
-            cd.setAlwaysOnTop(true);
-            cd.setVisible(true);
-        }
-
-        if(selected == "Shell Command")
-        {
-            ShellCmdDialog scd = new ShellCmdDialog(this);
-            scd.setAlwaysOnTop(true);
-            scd.setVisible(true);
-        }
-        
-        if(selected == "Split Audio")
-        {
-            SplitDialog spd = new SplitDialog(this);
-            spd.setAlwaysOnTop(true);
-            spd.setVisible(true);
-        }
+       TaskDialog t = new TaskDialog(this);
+       t.setAlwaysOnTop(true);
+       t.setVisible(true);
     }//GEN-LAST:event_addTaskActionPerformed
 
-    private void actionsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionsListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actionsListActionPerformed
-
-    private void createConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConfigActionPerformed
-        jp = new JsonParser(tasks);
+    private void saveConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigActionPerformed
+        //jp = new JsonParser(Orders);
         JFileChooser fileChooser = new JFileChooser();
 
         if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
@@ -509,7 +327,7 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
                 Logger.getLogger(JAMMNewsUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_createConfigActionPerformed
+    }//GEN-LAST:event_saveConfigActionPerformed
 
     private void connButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connButtonActionPerformed
         conn = new tcpConnection(hostField.getText(), 4444);
@@ -533,7 +351,7 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
                 conn.readFromConnection();
             } 
             jp = new JsonParser(conn.getReceived());
-            tasks = jp.getTaskList();
+            //orders = jp.getTaskList();
             refreshList();
         }
     }//GEN-LAST:event_recTasksBtnActionPerformed
@@ -568,86 +386,28 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
 
     public <T> void addTaskHandler(T ac)
     {        
-        Task t = new Task();           
-        t.setAction(ac);
-        t.setRepeat(rptChk.getState());
-        t.setHour(Integer.parseInt(hourCbox.getSelectedItem()));
-        t.setMin(Integer.parseInt(minCbox.getSelectedItem()));
-        t.setSec(Integer.parseInt(secCbox.getSelectedItem()));
-        
-        tasks.addLast(t);
+        Order t = new Order();           
+
+        //orders.addLast(t);
         refreshList();
     }
     
     public <T> void editTaskHandler(T ac, int index)
     {        
-        Task t = new Task();           
+        Order t = new Order();           
         t.setAction(ac);
-        t.setRepeat(rptChk.getState());
-        t.setHour(Integer.parseInt(hourCbox.getSelectedItem()));
-        t.setMin(Integer.parseInt(minCbox.getSelectedItem()));
-        t.setSec(Integer.parseInt(secCbox.getSelectedItem()));
+
         
-        tasks.set(index, t);
+        //tasks.set(index, t);
         refreshList();
     }
     
     private void refreshList()
     {
-        //taskList.removeAll();
-        remTaskList.removeAll();
-        String action = "";
-    
-        for (Task t : tasks) 
-        {
-            if(Download.class.isInstance(t.getAction()))
-            {
-                action = "download";
-            }
-
-            if(Mix.class.isInstance(t.getAction()))
-            {
-                action = "mix";
-            }
-
-            if(Concat.class.isInstance(t.getAction()))
-            {
-                action = "cct";
-            }
-
-            if(ShellCmd.class.isInstance(t.getAction()))
-            {
-                action = "cmd";
-            }
-            
-            if(Split.class.isInstance(t.getAction()))
-            {
-                action = "Split";
-            }
         
-            String taskStr = "\t Action : " +
-            action + 
-            "\t Time : " + 
-            makeTime(t.getHour()) +
-            ":" +
-            makeTime(t.getMin()) +
-            ":" +
-            makeTime(t.getSec()) + 
-            "\t Repeat : " + 
-            t.isRepeat();
-            
-            remTaskList.add(taskStr);
-            taskList.add(taskStr);            
-        }
+        
     }
-    
-    private String makeTime(int t)
-    {
-        if(t < 10)
-            return "0" + t;
-        else
-            return t + "";
-    }
+
     
     /**
      * @param args the command line arguments
@@ -685,16 +445,12 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.List actionsList;
     private java.awt.Button addTask;
     private javax.swing.JButton connButton;
-    private javax.swing.JButton createConfig;
     private java.awt.Button delTask;
     private javax.swing.JButton disConnBtn;
     private java.awt.Button editTask;
     private javax.swing.JTextField hostField;
-    private java.awt.Choice hourCbox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -703,20 +459,13 @@ public class JAMMNewsUI<T> extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private java.awt.Label label5;
     private java.awt.Label label6;
     private java.awt.Label label7;
-    private java.awt.Choice minCbox;
     private javax.swing.JTextField portField;
     private javax.swing.JButton recTasksBtn;
     private java.awt.List remTaskList;
     private javax.swing.JButton rnowBtn;
-    private java.awt.Checkbox rptChk;
-    private java.awt.Choice secCbox;
+    private javax.swing.JButton saveConfig;
     private javax.swing.JLabel statLabel;
     private javax.swing.JTextArea statusTextArea;
     private java.awt.List taskList;
